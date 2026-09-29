@@ -11,3 +11,158 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+    /* // footer */
+        .footer {
+            background-color: #fff;
+            padding: 55px 0 110px;
+        }
+
+        .footer-container {
+            max-width: 1640px;
+            margin: auto;
+            padding: 0 24px;
+        }
+
+        .footer h5 {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .footer ul {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .footer ul li {
+            margin-bottom: 13px;
+        }
+
+        .footer ul li a {
+            color: #444;
+            text-decoration: none;
+            font-size: 20px;
+        }
+
+        .footer ul li a:hover {
+            color: #0d6efd;
+        }
+
+        .newsletter-title {
+            font-size: 26px;
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .newsletter-text {
+            font-size: 20px;
+            margin-bottom: 20px;
+        }
+
+        .newsletter-form .form-control {
+            height: 47px;
+            font-size: 19px;
+            border-radius: 8px;
+        }
+
+        .newsletter-form .btn {
+            height: 47px;
+            font-size: 19px;
+            border-radius: 8px;
+            padding: 0 17px;
+        }
+
+        .footer-divider {
+            margin-top: 55px;
+            margin-bottom: 28px;
+            border-color: #d8d8d8;
+            opacity: 1;
+        }
+
+        .copyright {
+            font-size: 20px;
+            margin: 0;
+        }
+
+        .social-icons {
+            display: flex;
+            align-items: center;
+            gap: 22px;
+        }
+
+        .social-icons a {
+            color: #000;
+            text-decoration: none;
+            font-size: 31px;
+            transition: 0.2s;
+        }
+
+        .social-icons a:hover {
+            color: #0d6efd;
+        }
+
+        /* Nút theme góc phải */
+        .theme-btn {
+            position: fixed;
+            right: 40px;
+            bottom: 15px;
+            height: 52px;
+            min-width: 69px;
+            border: none;
+            border-radius: 8px;
+            background-color: #712cf9;
+            color: #fff;
+            font-size: 20px;
+            z-index: 1000;
+        }
+
+        .theme-btn:hover {
+            background-color: #6528e0;
+        }
+
+        @media (max-width: 991px) {
+            .footer {
+                padding-top: 40px;
+            }
+
+            .footer h5,
+            .newsletter-title {
+                font-size: 22px;
+            }
+
+            .footer ul li a,
+            .newsletter-text,
+            .copyright {
+                font-size: 17px;
+            }
+
+            .newsletter {
+                margin-top: 25px;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .footer-column {
+                margin-bottom: 30px;
+            }
+
+            .footer-bottom {
+                gap: 20px;
+            }
+
+            .theme-btn {
+                right: 15px;
+                bottom: 15px;
+            }
+        }
+  
+/* // end footer */
+/* Mũi bên của banner carousel */
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    filter: invert(1);
+}
+
+/* end mũi tên của baner carousel  */
