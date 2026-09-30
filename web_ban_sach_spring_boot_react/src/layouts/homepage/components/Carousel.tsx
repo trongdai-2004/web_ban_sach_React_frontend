@@ -7,9 +7,9 @@ function Carousel() {
                 <div className="carousel-inner">
                     <div className="carousel-item active">
 
-                        <div className = "row align-items-center">
+                        <div className="row align-items-center">
                             <div className="col-5 text-center">
-                            <img src={require("./../../../images/books/1.jpg")} className="float-end"  style={{width:'150px'}} />
+                                <img src={"./../../../images/books/1.jpg"} className="float-end" style={{ width: '150px' }} />
                             </div>
                             <div className="col-7">
                                 <h5>First slide label</h5>
@@ -18,11 +18,11 @@ function Carousel() {
                         </div>
                     </div>
 
-                     <div className="carousel-item">
+                    <div className="carousel-item">
 
-                        <div className = "row align-items-center">
+                        <div className="row align-items-center">
                             <div className="col-5 text-center">
-                            <img src={require("./../../../images/books/2.jpg")} className="float-end"  style={{width:'150px'}} />
+                                <img src={"./../../../images/books/2.jpg"} className="float-end" style={{ width: '150px' }} />
                             </div>
                             <div className="col-7">
                                 <h5>First slide label</h5>
@@ -30,11 +30,11 @@ function Carousel() {
                             </div>
                         </div>
                     </div>
-                     <div className="carousel-item ">
+                    <div className="carousel-item ">
 
-                        <div className = "row align-items-center">
+                        <div className="row align-items-center">
                             <div className="col-5 text-center">
-                            <img src={require("./../../../images/books/3.jpg")} className="float-end"  style={{width:'150px'}} />
+                                <img src={"./../../../images/books/3.jpg"} className="float-end" style={{ width: '150px' }} />
                             </div>
                             <div className="col-7">
                                 <h5>First slide label</h5>
@@ -42,8 +42,6 @@ function Carousel() {
                             </div>
                         </div>
                     </div>
-
-
 
                 </div>
                 <button className="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
