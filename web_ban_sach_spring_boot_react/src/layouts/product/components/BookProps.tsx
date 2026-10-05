@@ -1,34 +1,34 @@
 import React from "react";
 import Book from "../../../models/Book";
+import BookModel from "../../../models/BookModel";
 
-interface BookProps {
-    book: Book;
-
+interface BookPropsInterface {
+    book: BookModel;
 }
 
-const BookProps: React.FC<BookProps> = ({ book }) => {
+const BookProps: React.FC<BookPropsInterface> = (props) => {
     return (
         <div className="col-md-3 mt-2">
             <div className="card">
                 <img
-                    src={book.imageUrl}
+                    src={""}
                     className="card-img-top"
-                    alt={book.title}
+                    alt={props.book.book_name}
                     style={{ height: '200px' }}
                 />
 
                 <div className="card-body">
-                    <h5 className="card-title">{book.title}</h5>
+                    <h5 className="card-title">{props.book.book_name}</h5>
 
-                    <p className="card-text">{book.description}</p>
+                    <p className="card-text">{props.book.description}</p>
 
                     <div className="price">
                         <span className="original-price">
-                            <del>{book.originalPrice}</del>
+                            <del>{props.book.original_price}</del>
                         </span>
 
                         <span className="discounted-price">
-                            <strong>{book.price}</strong>
+                            <strong>{props.book.price}</strong>
                         </span>
                     </div>
 

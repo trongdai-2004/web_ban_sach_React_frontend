@@ -1,7 +1,8 @@
 import React from "react";
 import Banner from "./components/Banner";
 import Carousel from "./components/Carousel";
-import List from "../product/List";
+
+import ListProduct from "../product/ListProduct";
 
 
 function HomePage() {
@@ -9,7 +10,7 @@ function HomePage() {
         <div>
             <Banner />
             <Carousel />
-            <List />
+            <ListProduct />
         </div>
     );
 }
