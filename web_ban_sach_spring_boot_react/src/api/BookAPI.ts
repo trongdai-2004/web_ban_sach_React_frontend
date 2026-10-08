@@ -1,17 +1,6 @@
 import React from "react";
 import BookModel from "../models/BookModel"
-
-async function request(endpoint:string) {
-    // truy vấn đến đường dẫn
-    const respone = await fetch(endpoint);
-
-    // nếu trả về lỗi
-    if(!respone.ok) {
-      throw new Error(`không thể truy cập ${endpoint} `);
-    }
-    // nếu trả về ok
-    return respone.json();
-}
+import { my_request } from "./Request";
 
 export async function getAllBooks(): Promise<BookModel[]> {
     const result:BookModel[] = [];
@@ -22,7 +11,7 @@ export async function getAllBooks(): Promise<BookModel[]> {
     const endpoint:string = "http://localhost:8080/book"; 
 
     // gọi hàm request để truy vấn đến endpoint
-    const response = await request(endpoint);
+    const response = await my_request(endpoint);
 
     // lấy ra json Sách
 
