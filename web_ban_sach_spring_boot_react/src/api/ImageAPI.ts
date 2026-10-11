@@ -2,14 +2,11 @@ import React from "react";
 import ImageModel from "../models/ImageModel"
 import { my_request } from "./Request";
 
-export async function getAllImageOneBook(book_id: number): Promise<ImageModel[]> {
+
+async function getImageOneBook(endpoint: string): Promise<ImageModel[]> {
+
     const result:ImageModel[] = [];
-
-
-    // xác định endpoint
-
-    const endpoint:string = `http://localhost:8080/book/${book_id}/listImage`; 
-
+   
     // gọi hàm request để truy vấn đến endpoint
     const response = await my_request(endpoint);
 
@@ -33,6 +30,20 @@ export async function getAllImageOneBook(book_id: number): Promise<ImageModel[]>
     }
 
     return result;
+
+
+}
+
+
+export async function getAllImageOneBook(book_id: number): Promise<ImageModel[]> {
+     const endpoint:string = `http://localhost:8080/book/${book_id}/listImage`; 
+     return getImageOneBook(endpoint);
+
+}
+
+export async function getOneImageOneBook(book_id: number): Promise<ImageModel[]> {
+     const endpoint:string = `http://localhost:8080/book/${book_id}/listImage?sort=imageID,asc?page=0&size=1`; 
+     return getImageOneBook(endpoint);
 
 }
 

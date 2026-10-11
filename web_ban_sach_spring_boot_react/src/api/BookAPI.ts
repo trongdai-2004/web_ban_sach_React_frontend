@@ -2,14 +2,14 @@ import React from "react";
 import BookModel from "../models/BookModel"
 import { my_request } from "./Request";
 
-export async function getAllBooks(): Promise<BookModel[]> {
-    const result:BookModel[] = [];
+
+async function getBook(endpoint: string): Promise<BookModel[]> {
+     const result:BookModel[] = [];
 
 
     // xác định endpoint
 
-    const endpoint:string = "http://localhost:8080/book"; 
-
+    
     // gọi hàm request để truy vấn đến endpoint
     const response = await my_request(endpoint);
 
@@ -35,6 +35,23 @@ export async function getAllBooks(): Promise<BookModel[]> {
     }
 
     return result;
+
+}
+
+
+export async function getAllBooks(): Promise<BookModel[]> {
+   
+    const endpoint: string = "http://localhost:8080/book?sort=bookID,desc"; 
+
+    return getBook(endpoint);
+
+}
+
+export async function getTop3NewestBooks(): Promise<BookModel[]> {
+   
+    const endpoint: string = "http://localhost:8080/book?sort=bookID,desc&page=0&size=3"; 
+
+    return getBook(endpoint);
 
 }
 

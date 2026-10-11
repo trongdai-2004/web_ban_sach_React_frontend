@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Book from "../../../models/Book";
 import BookModel from "../../../models/BookModel";
 import ImageModel from "../../../models/ImageModel";
-import { getAllImageOneBook } from "../../../api/ImageAPI";
+import { getAllImageOneBook, getOneImageOneBook } from "../../../api/ImageAPI";
 
 interface BookPropsInterface {
     book: BookModel;
@@ -19,7 +19,7 @@ const BookProps: React.FC<BookPropsInterface> = (props) => {
     const [error, setError] = useState(null);
 
     useEffect(() =>{
-        getAllImageOneBook(bookID).then(
+        getOneImageOneBook(bookID).then(
             imageData =>{
                 setListImage(imageData);
                 setLoadingData(false);
