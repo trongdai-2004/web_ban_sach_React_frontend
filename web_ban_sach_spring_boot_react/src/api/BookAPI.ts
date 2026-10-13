@@ -2,8 +2,13 @@ import React from "react";
 import BookModel from "../models/BookModel"
 import { my_request } from "./Request";
 
+interface resultInterface{
+    result:  BookModel[];
+    totalPages: number;
+    totalBooks: number;
+}
 
-async function getBook(endpoint: string): Promise<BookModel[]> {
+async function getBook(endpoint: string): Promise<resultInterface> {
      const result:BookModel[] = [];
 
 
@@ -18,6 +23,12 @@ async function getBook(endpoint: string): Promise<BookModel[]> {
     const responseData = response._embedded.books;
 
     console.log(responseData);
+    
+    // lay thong tin trang
+
+    const totalPages:number = response.page.totalPages;
+    const totalBooks:number = response.page.totalElements;
+
 
     for(const key in responseData) {
 
@@ -34,20 +45,20 @@ async function getBook(endpoint: string): Promise<BookModel[]> {
         })
     }
 
-    return result;
+    return {result: result, totalPages: totalPages, totalBooks: totalBooks};
 
 }
 
 
-export async function getAllBooks(): Promise<BookModel[]> {
+export async function getAllBooks(pageNow:number): Promise<resultInterface> {
    
-    const endpoint: string = "http://localhost:8080/book?sort=bookID,desc"; 
+    const endpoint: string = `http://localhost:8080/book?sort=bookID,desc&size=8&page=${pageNow}`; 
 
     return getBook(endpoint);
 
 }
 
-export async function getTop3NewestBooks(): Promise<BookModel[]> {
+export async function getTop3NewestBooks(): Promise<resultInterface> {
    
     const endpoint: string = "http://localhost:8080/book?sort=bookID,desc&page=0&size=3"; 
 
