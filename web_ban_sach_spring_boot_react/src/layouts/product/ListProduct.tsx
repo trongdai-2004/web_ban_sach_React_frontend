@@ -1,11 +1,15 @@
 import React, { useEffect, useState } from "react";
 import BookModel from "../../models/BookModel";
 import BookProps from "./components/BookProps";
-import { getAllBooks } from "../../api/BookAPI";
+import { getAllBooks, searchBooks } from "../../api/BookAPI";
 import { Pagination } from "../utils/Pagination";
 
+interface ListProductProps{
+    searchKeywords: string;
+}
 
-const ListProduct: React.FC = () => {
+ 
+function ListProduct({searchKeywords}:ListProductProps)  {
 
     const [listBook, setListBook] = useState<BookModel[]>([]);
 
@@ -17,6 +21,7 @@ const ListProduct: React.FC = () => {
     const [totalBook, setTotalBook] = useState(0);
 
     useEffect(() => {
+        if(searchKeywords ===' '){
         getAllBooks(pageNow - 1).then(
             result => {
                 setListBook(result.result);
@@ -28,9 +33,25 @@ const ListProduct: React.FC = () => {
                 setError(error.message);
             }
 
-        )
+        );
+    }else{
 
-    }, [pageNow] // chỉ gọi 1 lần 
+        searchBooks(searchKeywords).then(
+            result => {
+                setListBook(result.result);
+                setTotalPage(result.totalPages);
+                setLoadingData(false);
+            }
+        ).catch(
+            error => {
+                setError(error.message);
+            }
+
+        );
+        
+    }
+
+    }, [pageNow, searchKeywords] // chỉ gọi 1 lần 
     )
 
 
@@ -56,7 +77,18 @@ const ListProduct: React.FC = () => {
         )
     }
 
+    if(listBook.length === 0){
+          return (
 
+        <div className="container ">
+            <div className="row mt-4 mb-4">
+                <h1>Hiện không tìm thấy sách theo yêu cầu !</h1>
+            </div>
+
+           
+        </div>
+    );
+    }
     return (
 
         <div className="container ">

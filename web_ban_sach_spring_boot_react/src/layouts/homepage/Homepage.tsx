@@ -4,13 +4,17 @@ import Carousel from "./components/Carousel";
 
 import ListProduct from "../product/ListProduct";
 
+interface HomePageProps{
+    searchKeywords: string
+}
 
-function HomePage() {
+
+function HomePage({searchKeywords}: HomePageProps) {
     return (
         <div>
             <Banner />
             <Carousel />
-            <ListProduct />
+            <ListProduct searchKeywords={searchKeywords}  />
         </div>
     );
 }

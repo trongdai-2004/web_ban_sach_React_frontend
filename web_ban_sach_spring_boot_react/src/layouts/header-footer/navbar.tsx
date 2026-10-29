@@ -1,6 +1,19 @@
-import React from "react";
+import React, { ChangeEvent, useState } from "react";
+interface NavbarProps {
+    searchKeywords:string;
+    setsearchKeywords:(keywords :string)=>void;
 
-function Navbar() {
+}
+
+function Navbar({searchKeywords,setsearchKeywords}: NavbarProps) {
+    const [temporaryKeyword, settemporaryKeyword] = useState('')
+    const onSearchInputChange = (e: ChangeEvent<HTMLInputElement>)=>{
+        settemporaryKeyword (e.target.value);
+    }
+    const handleSearch = ()=>{
+        setsearchKeywords(temporaryKeyword);
+    }
+
     return (
         <div className="App">
             <nav className="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -120,20 +133,20 @@ function Navbar() {
                     </div>
 
                     {/* Tìm kiếm */}
-                    <form className="d-flex">
+                    <div className="d-flex">
                         <input
                             className="form-control me-2"
                             type="search"
                             placeholder="Tìm kiếm"
-                            aria-label="Search"
+                            aria-label="Search" onChange={onSearchInputChange} value={temporaryKeyword}
                         />
                         <button
                             className="btn btn-outline-success"
-                            type="submit"
+                            type="button" onClick={handleSearch}
                         >
                             Search
                         </button>
-                    </form>
+                    </div>
 
                     {/* Biểu tượng giỏ hàng */}
                     <ul className="navbar-nav me-1">

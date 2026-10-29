@@ -66,4 +66,18 @@ export async function getTop3NewestBooks(): Promise<resultInterface> {
 
 }
 
+// http://localhost:8080/book/search/findByBookNameContaining?bookName=tam%20ly
+
+
+export async function searchBooks(searchKeywords: string): Promise<resultInterface> {
+   
+    let endpoint: string = `http://localhost:8080/book?sort=bookID,desc&size=8&page=0`; 
+    if(searchKeywords !== ''){
+       endpoint =`http://localhost:8080/book/search/findByBookNameContaining?sort=bookID,desc&size=8&page=0&bookName=${searchKeywords}`
+    }
+
+    return getBook(endpoint);
+
+
+}
 
